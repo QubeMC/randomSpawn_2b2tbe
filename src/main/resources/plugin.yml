@@ -1,0 +1,8 @@
+#this plugin is made by maxxie114
+
+name: randomSpawn_2b2tbe
+main: randomSpawn_2b2tbe.randomSpawn
+
+version: "3.0.0"
+api: ["1.0.7"]
+author: maxxie114

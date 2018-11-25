@@ -1,12 +1,28 @@
-package randomSpawn;
 /*
- * Description: This plugin randomly spawn players at different places with a range specified in config.yml
+ * MIT License
+ *
+ * Copyright (c) 2018 2B2TMCBE
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  * 
- * Version: 3.0.0
- * 
- * Author: maxxie114
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
+package randomSpawn_2b2tbe;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,9 +38,7 @@ import java.util.HashSet;
 //import java.nio.charset.Charset;
 import java.util.LinkedHashMap;
 //import java.util.Set;
-
 //import com.google.common.io.Files;
-
 //import all dependencies from nukkitx
 import cn.nukkit.level.Position;
 import cn.nukkit.plugin.PluginBase;
@@ -32,7 +46,7 @@ import cn.nukkit.utils.Config;
 import cn.nukkit.utils.TextFormat;
 
 //Create class
-public class randomSpawn extends PluginBase{
+public class randomSpawn extends PluginBase {
   //define public variables
   public int maxRange;
   public String maxRangeInStr;
@@ -44,6 +58,7 @@ public class randomSpawn extends PluginBase{
   private Config config;
   private File file;
   private String filePath = "plugins/randomSpawn_2b2tbe/playerlist.txt";
+
   //private FileWriter name;
   //private File information;
   //private Config list;
@@ -54,8 +69,9 @@ public class randomSpawn extends PluginBase{
     this.getLogger().info(TextFormat.GREEN + "randomSpawn is loaded!");
 
   }
+
   //When the plugin is enabled
-  @SuppressWarnings({ "deprecation" })
+  @SuppressWarnings({"deprecation"})
   @Override
   public void onEnable() {
     //register EventListener so it will work
@@ -67,11 +83,9 @@ public class randomSpawn extends PluginBase{
 
 
     //Create config.yml
-    this.config = new Config(
-        new File(this.getDataFolder(), "config.yml"),
-        Config.YAML,
+    this.config = new Config(new File(this.getDataFolder(), "config.yml"), Config.YAML,
 
-        new LinkedHashMap<String, Object>(){
+        new LinkedHashMap<String, Object>() {
           /**
            * 
            */
@@ -80,16 +94,16 @@ public class randomSpawn extends PluginBase{
           //create key spawnRange with default input 900
           {
             //default settings specific to 2b2tbe
-            put("spawnRange","300");
+            put("spawnRange", "300");
           }
         });
 
     //Create playerList.txt
     file = new File(filePath);
     //Check if the parent directory exist, create it if not exist
-    if(!file.getParentFile().mkdir()) {
+    if (!file.getParentFile().mkdir()) {
       file.getParentFile().mkdir();
-    } 
+    }
     //create the playerlist.txt
     try {
       file.createNewFile();
@@ -119,6 +133,7 @@ public class randomSpawn extends PluginBase{
     int range = Integer.valueOf(rangeInStr);
     return range;
   }
+
   //This Set maxRange to the an Int value 
   public void setMaxRange(int range) {
     maxRange = range;
@@ -134,10 +149,10 @@ public class randomSpawn extends PluginBase{
       output.write("");
       output.newLine();
       output.close();
-    } catch(IOException e) {
+    } catch (IOException e) {
       e.printStackTrace();
     }
-  } 
+  }
 
   //This function read the file line-by-line and store it into a HashSet
   public HashSet<String> readPlayerList(String filename) {
@@ -149,7 +164,7 @@ public class randomSpawn extends PluginBase{
         set.add(line);
       }
       in.close();
-      return set; 
+      return set;
     } catch (IOException e) {
       e.printStackTrace();
     }

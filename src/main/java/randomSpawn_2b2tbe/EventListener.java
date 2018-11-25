@@ -1,11 +1,9 @@
-package randomSpawn;
 /*
- * Description: This is the event Listener of this plugin
- * 
- * Author: maxxie114
- * 
- * version: 3.0.0
+ *  Copyright (c) 2B2TMCBE. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
  */
+
+package randomSpawn_2b2tbe;
 
 // import cn.nukkit.utils.TextFormat;
 // import cn.nukkit.plugin.PluginBase;
